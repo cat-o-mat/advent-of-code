@@ -5,7 +5,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
 
-public class Task {
+public class Task_I {
 
     public void calcFuelRequirements() {
         try {
