@@ -11,6 +11,7 @@ public class Task_II {
     private static final int ADD_CODE = 1;
     private static final int MULT_CODE = 2;
     private static final int RESULT_IDX = 0;
+    private static final int CORRECT_ANSWER = 3850704;
     private static final int WANTED_RESULT = 19690720;
 
     private String input = "";
@@ -67,8 +68,10 @@ public class Task_II {
                 res += 4;
             }
 
-            System.out.println("Result:" + intcode[RESULT_IDX]);
-            System.out.println("Correct answer is: 3850704");
+            // reduces output in task_2_2 (findInputs)
+            if (intcode[RESULT_IDX] == CORRECT_ANSWER) {
+                System.out.println("Result:" + intcode[RESULT_IDX]);
+            }
         } else {
             System.out.println("No input found.");
             return null;
