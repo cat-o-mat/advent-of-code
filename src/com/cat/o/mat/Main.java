@@ -9,8 +9,10 @@ public class Main {
         Task_I dayOne = new Task_I();
         dayOne.calcFuelRequirements();
         dayOne.calcFuelRequirementsRec();
+
         Task_II dayTwo = new Task_II();
-        dayTwo.runIntcode();
+        dayTwo.runIntcode(12, 2);
+        dayTwo.findInputs();
     }
 }
 
