@@ -7,6 +7,7 @@ import java.util.List;
 
 public class Task_I {
 
+    // 1.1
     public void calcFuelRequirements() {
         try {
             List<String> inputs = Files.readAllLines(Paths.get("src/com/cat/o/mat/day_one/input.txt"));
@@ -23,7 +24,7 @@ public class Task_I {
         }
     }
 
-
+    // 1.2
     public void calcFuelRequirementsRec() {
         try {
             List<String> inputs = Files.readAllLines(Paths.get("src/com/cat/o/mat/day_one/input.txt"));

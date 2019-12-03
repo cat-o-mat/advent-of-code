@@ -17,13 +17,18 @@ public class Task_III {
     private static final int MOVE_DISTANCE = 1;
 
 
-    private String input = "";
-    private String[] wireInputs = {};
-    private List<Wire> wires = new ArrayList<>();
-    private List<Cell> crossPoints = new ArrayList<>();
+    private String input;
+    private String[] wireInputs;
+    private List<Wire> wires;
+    private List<Cell> crossPoints;
 
 
+    // 3.1
     public void calcDistance() {
+        // resetting all values for the second task
+        wires = new ArrayList<>();
+        crossPoints = new ArrayList<>();
+
         readInput();
         addPathsToWires();
         getShortestDistance();
@@ -97,10 +102,36 @@ public class Task_III {
                 .orElse(0);
 
         System.out.println("Minimal disnace: " + minDistance);
+        System.out.println("Correct answer is: 221");
     }
 
 
     private int calcManhattanDistance(int x, int y) {
         return Math.abs(x) + Math.abs(y);
+    }
+
+
+    // 3.2
+    public void calcFewestSteps() {
+        calcDistance();
+        List<Integer> combinedDistances = new ArrayList<>();
+
+        for (Cell crossPoint : crossPoints) {
+            int distance = 0;
+            for (Wire w : wires) {
+                distance += w.getVisited().indexOf(crossPoint);
+            }
+            combinedDistances.add(distance);
+        }
+
+        if (!combinedDistances.isEmpty()) {
+            Integer minCombinedSteps = combinedDistances.stream()
+                    .reduce(Integer::min)
+                    .orElse(0);
+            System.out.println("What is the fewest combined steps the wires must take to reach an intersection? " + minCombinedSteps);
+            System.out.println("Correct answer is: 18542");
+        } else {
+            System.out.println("No intersection found.");
+        }
     }
 }

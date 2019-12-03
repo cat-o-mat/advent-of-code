@@ -17,6 +17,7 @@ public class Main {
 
         Task_III dayThree = new Task_III();
         dayThree.calcDistance();
+        dayThree.calcFewestSteps();
     }
 }
 

@@ -35,6 +35,7 @@ public class Task_II {
         }
     }
 
+    // 2.1
     public Integer runIntcode(Integer custLeftOp, Integer custRightOp) {
         readInput();
 
@@ -79,6 +80,7 @@ public class Task_II {
         return intcode[RESULT_IDX];
     }
 
+    // 2.2
     public void findInputs() {
         for (int leftOp = 0; leftOp < 99; leftOp++) {
             for (int rightOp = 0; rightOp < 99; rightOp++) {
