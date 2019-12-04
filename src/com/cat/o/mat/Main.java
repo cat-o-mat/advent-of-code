@@ -22,6 +22,7 @@ public class Main {
 
         Task_IV dayFour = new Task_IV();
         dayFour.countNumOfPswds();
+        dayFour.countNumOfPswds_2();
     }
 }
 

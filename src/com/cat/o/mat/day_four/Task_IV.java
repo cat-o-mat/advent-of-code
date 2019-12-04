@@ -15,6 +15,16 @@ public class Task_IV {
         System.out.println("How many different passwords within the range given in your puzzle input meet these criteria? " + count);
     }
 
+    public void countNumOfPswds_2() {
+        int count = 0;
+        for (int i = LOWER_BOUND; i <= UPPER_BOUND; i++) {
+            if (hasSameAjacentDigits_2(i) && hasOnlyIncrNumsers(i)) {
+                count++;
+            }
+        }
+        System.out.println("How many different passwords within the range given in your puzzle input meet these criteria? " + count);
+    }
+
     // works in reverse: 193 => 3 9 1
     private boolean hasSameAjacentDigits(int num) {
         int curr = num % 10;
@@ -28,6 +38,26 @@ public class Task_IV {
             num = num / 10;
         }
         return false;
+    }
+
+    // works in reverse: 193 => 3 9 1
+    private boolean hasSameAjacentDigits_2(int num) {
+        int curr = num % 10;
+        num = num / 10;
+        int sumOfSame = 1;
+        while (num > 0) {
+            int pred = num % 10;
+            if (curr == pred) {
+                sumOfSame++;
+            } else if (sumOfSame == 2) {
+                return true;
+            } else {
+                sumOfSame = 1;
+            }
+            curr = pred;
+            num = num / 10;
+        }
+        return sumOfSame == 2;
     }
 
     // works in reverse: 193 => 3 9 1
