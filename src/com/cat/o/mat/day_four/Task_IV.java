@@ -1,67 +1,37 @@
 package com.cat.o.mat.day_four;
 
+import java.util.function.Function;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+
 public class Task_IV {
 
     private static final int LOWER_BOUND = 193651;
     private static final int UPPER_BOUND = 649729;
 
     public void countNumOfPswds() {
-        int count = 0;
-        for (int i = LOWER_BOUND; i <= UPPER_BOUND; i++) {
-            if (hasSameAjacentDigits(i) && hasOnlyIncrNumsers(i)) {
-                count++;
-            }
-        }
-        System.out.println("How many different passwords within the range given in your puzzle input meet these criteria? " + count);
+        System.out.println("How many different passwords within the range given in your puzzle input meet these criteria? " + countWith(v -> v >= 2));
     }
 
     public void countNumOfPswds_2() {
-        int count = 0;
-        for (int i = LOWER_BOUND; i <= UPPER_BOUND; i++) {
-            if (hasSameAjacentDigits_2(i) && hasOnlyIncrNumsers(i)) {
-                count++;
-            }
-        }
-        System.out.println("How many different passwords within the range given in your puzzle input meet these criteria? " + count);
+        System.out.println("How many different passwords within the range given in your puzzle input meet these criteria? " + countWith(v -> v == 2));
+    }
+
+    private long countWith(Predicate<Long> predicate) {
+        return IntStream.rangeClosed(LOWER_BOUND, UPPER_BOUND)
+                .filter(Task_IV::hasOnlyIncrNumbers)
+                .filter(i ->
+                        Integer.toString(i).chars()
+                                .boxed()
+                                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))
+                                .values().stream()
+                                    .anyMatch(predicate)
+                ).count();
     }
 
     // works in reverse: 193 => 3 9 1
-    private boolean hasSameAjacentDigits(int num) {
-        int curr = num % 10;
-        num = num / 10;
-        while (num > 0) {
-            int pred = num % 10;
-            if (curr == pred) {
-                return true;
-            }
-            curr = pred;
-            num = num / 10;
-        }
-        return false;
-    }
-
-    // works in reverse: 193 => 3 9 1
-    private boolean hasSameAjacentDigits_2(int num) {
-        int curr = num % 10;
-        num = num / 10;
-        int sumOfSame = 1;
-        while (num > 0) {
-            int pred = num % 10;
-            if (curr == pred) {
-                sumOfSame++;
-            } else if (sumOfSame == 2) {
-                return true;
-            } else {
-                sumOfSame = 1;
-            }
-            curr = pred;
-            num = num / 10;
-        }
-        return sumOfSame == 2;
-    }
-
-    // works in reverse: 193 => 3 9 1
-    private boolean hasOnlyIncrNumsers(int num) {
+    private static boolean hasOnlyIncrNumbers(int num) {
         int curr = num % 10;
         num = num / 10;
         while (num > 0) {
@@ -74,5 +44,4 @@ public class Task_IV {
         }
         return true;
     }
-
 }
