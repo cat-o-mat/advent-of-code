@@ -37,13 +37,11 @@ public class Task_IV {
         while (num > 0) {
             int pred = num % 10;
             if (curr < pred) {
-                System.out.println("false");
                 return false;
             }
             curr = pred;
             num = num / 10;
         }
-        System.out.println("true");
         return true;
     }
 
