@@ -1,5 +1,6 @@
 package com.cat.o.mat;
 
+import com.cat.o.mat.day_five.Task_V;
 import com.cat.o.mat.day_four.Task_IV;
 import com.cat.o.mat.day_one.Task_I;
 import com.cat.o.mat.day_three.Task_III;
@@ -23,6 +24,9 @@ public class Main {
         Task_IV dayFour = new Task_IV();
         dayFour.countNumOfPswds();
         dayFour.countNumOfPswds_2();
+
+        Task_V day_five = new Task_V();
+        day_five.runIntcode();
     }
 }
 
