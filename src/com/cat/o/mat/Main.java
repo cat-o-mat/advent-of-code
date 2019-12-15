@@ -27,6 +27,7 @@ public class Main {
 
         Task_V day_five = new Task_V();
         day_five.runIntcode();
+        day_five.runIntcode_2();
     }
 }
 
