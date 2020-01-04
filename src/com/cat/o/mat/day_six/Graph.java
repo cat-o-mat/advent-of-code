@@ -45,16 +45,6 @@ class Graph {
 
     }
 
-    void printGraph() {
-        for (Node n : graph) {
-            System.out.print(n.getName() + ": ");
-            n.printOrbiting();
-            System.out.println();
-            System.out.println("------------------------------------------");
-            System.out.println();
-        }
-    }
-
     void countNumOfOrbits() {
         int num = 0;
         for (Node n : graph) {
